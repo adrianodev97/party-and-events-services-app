@@ -1,34 +1,67 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Party and Events Services App
 
-## Getting Started
+![Party and Events Services App Logo](logoHere.png)
 
-First, run the development server:
+The Party and Events Services App is a system for managing services related to parties and events, designed to make it easy for clients to access professionals in various areas. With this application, you can easily find services such as party venues, bartenders, waiters, and more.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Search for services by area
+- Detailed view of professionals and their offered services
+- Scheduling and booking of professionals
+- Rating and feedback on services provided
+- Event and party management
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Technologies Used
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+The Party and Events Services App was developed using the following technologies:
 
-## Learn More
+- **Next.js**: A React-based web development framework that provides a modern development experience, performance optimization, and server-side rendering support.
+- **MUI**: A React component library for building responsive, elegant, and intuitive user interfaces.
+- **Firebase**: A mobile and web app development platform provided by Google, used for user authentication, real-time data storage, hosting, and more.
+- **Redux Toolkit**: A library for managing state in React applications, simplifying data flow and making development more efficient.
 
-To learn more about Next.js, take a look at the following resources:
+## Prerequisites
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Before starting to use the Party and Events Services App, make sure you have the following installed on your machine:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Node.js (version 12 or higher)
+- NPM (Node.js package manager)
 
-## Deploy on Vercel
+## Installation
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Follow the steps below to install and run the Party and Events Services App:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. Clone this repository to your local environment:
+   git clone https://github.com/adrianodev97/party-and-events-services-app.git
+
+2. Navigate to the project directory:
+   `cd party-and-events-services-app`
+
+3. Install the project dependencies:
+   `yarn`
+
+4. Create a `.env.local` file in the root of the project and configure the necessary environment variables. Refer to the `.env.example` file for information on the expected variables.
+
+5. Start the development server:
+   `yarn run dev`
+
+6. Access the application in your browser using the following address: [http://localhost:3000](http://localhost:3000)
+
+## Contribution
+
+Contributions are welcome! If you would like to contribute to the Party and Events Services App, follow these steps:
+
+1. Fork this repository.
+2. Create a branch for your feature or fix: `git checkout -b my-feature`.
+3. Make the desired changes and commit them: `git commit -m 'Implementing my feature'`.
+4. Push the changes to the remote repository: `git push origin my-feature`.
+5. Submit a pull request detailing the proposed changes.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+We hope that the Party and Events Services App proves useful to you in managing your party and event services. If you have any questions or need assistance, please don't hesitate to reach out. Happy party planning!
