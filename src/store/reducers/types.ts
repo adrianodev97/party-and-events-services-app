@@ -1,3 +1,5 @@
 export interface IExample {
-  name: string
+  email: string
+  id: string
+  isLogged: boolean
 }

@@ -1,5 +1,5 @@
-const Home = () => {
-  return <h1>Home</h1>
-}
+'use client'
+
+import { Home } from '@/pages/Home'
 
 export default Home
