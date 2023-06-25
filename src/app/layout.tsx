@@ -1,10 +1,7 @@
-import { ReactNode } from 'react'
-import { Inter } from 'next/font/google'
-import './globals.css'
-import { ReduxProvider } from '@/store/provider'
-import { ThemeProvider } from '@/style/theme/ThemeProvider'
+'use client'
 
-const inter = Inter({ subsets: ['latin'] })
+import { ReactNode } from 'react'
+import './globals.css'
 
 export const metadata = {
   title: 'PartYou',
@@ -14,11 +11,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="pt_BR">
-      <body className={inter.className}>
-        <ReduxProvider>
-          <ThemeProvider>layout{children}</ThemeProvider>
-        </ReduxProvider>
-      </body>
+      <body>{children}</body>
     </html>
   )
 }

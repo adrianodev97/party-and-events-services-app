@@ -1,5 +1,5 @@
 'use client'
 
-import { Home } from '@/pages/Home'
+import { HomePage } from '@/pages/Home'
 
-export default Home
+export default HomePage
