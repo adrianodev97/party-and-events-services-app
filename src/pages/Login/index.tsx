@@ -62,11 +62,12 @@ export const LoginPage = () => {
             </MUIStyledLogoBox>
             <MUIStyledSignInForm>
               <MUIStyledFormTitle>Login</MUIStyledFormTitle>
-              <TextField label="Email" />
+              <TextField label="Email" fullWidth />
               <TextField
                 label="Senha"
                 type="password"
                 autoComplete="current-password"
+                fullWidth
               />
               <Button>Login</Button>
             </MUIStyledSignInForm>
@@ -90,8 +91,8 @@ export const LoginPage = () => {
                   label="Profissional"
                 />
               </RadioGroup>
-              <TextField label="Nome Completo / Razão Social" />
-              <TextField label="Email" />
+              <TextField label="Nome Completo / Razão Social" fullWidth />
+              <TextField label="Email" fullWidth />
               <MUIStyledInlineInput className="inline-input">
                 <TextField label="Telefone" />
                 <FormControl>
