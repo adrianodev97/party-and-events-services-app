@@ -76,10 +76,10 @@ export const MUIStyledSignInBox = styled('div')(({ theme }) => ({
     position: 'absolute',
     width: '100%',
     height: '150px',
-    bottom: '0',
+    top: '0',
 
     '&.active': {
-      top: '0',
+      bottom: '0',
     },
   },
 }))
