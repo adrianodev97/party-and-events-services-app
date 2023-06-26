@@ -8,7 +8,7 @@ import {
   InputLabel,
   Select,
 } from '@mui/material'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import {
   MUIStyledFormBox,
   MUIStyledFormSignIn,
@@ -16,34 +16,29 @@ import {
   MUIStyledFormTitle,
   MUIStyledHaveAccountTitle,
   MUIStyledInfoBoxBg,
+  MUIStyledInlineInput,
   MUIStyledLoginBlock,
-  MUIStyledLoginSeciton,
+  MUIStyledLoginSection,
   MUIStyledLogoBox,
   MUIStyledSignInBox,
   MUIStyledSignInForm,
   MUIStyledSignUpBox,
   MUIStyledSignUpForm,
-  MUIStyledlogo,
+  // MUIStyledlogo,
 } from './styles'
 
 export const LoginPage = () => {
-  const [activeForm, setActiveForm] = useState({})
+  const [activeForm, setActiveForm] = useState<boolean>(true)
 
   const changeLogin = () => {
     activeForm ? setActiveForm(false) : setActiveForm(true)
   }
 
-  useEffect(() => {
-    alert(activeForm)
-  }, [activeForm])
-
   return (
-    <MUIStyledLoginSeciton
-      className={['loginPage', activeForm ? 'active' : ''].join(' ')}
-    >
+    <MUIStyledLoginSection className={activeForm ? 'active' : ''}>
       <MUIStyledLoginBlock>
-        <MUIStyledInfoBoxBg className="blueBg">
-          <MUIStyledSignInBox className="box signin">
+        <MUIStyledInfoBoxBg className={activeForm ? 'active' : ''}>
+          <MUIStyledSignInBox className={activeForm ? '' : 'active'}>
             <MUIStyledHaveAccountTitle>
               Já possui conta?
             </MUIStyledHaveAccountTitle>
@@ -51,7 +46,7 @@ export const LoginPage = () => {
               Entrar
             </Button>
           </MUIStyledSignInBox>
-          <MUIStyledSignUpBox className="box signup">
+          <MUIStyledSignUpBox className={activeForm ? 'active' : ''}>
             <MUIStyledHaveAccountTitle>
               Não possui conta?
             </MUIStyledHaveAccountTitle>
@@ -60,12 +55,10 @@ export const LoginPage = () => {
             </Button>
           </MUIStyledSignUpBox>
         </MUIStyledInfoBoxBg>
-        <MUIStyledFormBox
-          className={['formBx', activeForm ? 'active' : ''].join(' ')}
-        >
-          <MUIStyledFormSignIn className="form signinForm">
+        <MUIStyledFormBox className={activeForm ? 'active' : ''}>
+          <MUIStyledFormSignIn className={activeForm ? 'active' : ''}>
             <MUIStyledLogoBox className="logo">
-              <MUIStyledlogo src={logo} fill alt="logo" />
+              {/* <MUIStyledlogo src={logo} fill alt="logo" /> */}
             </MUIStyledLogoBox>
             <MUIStyledSignInForm>
               <MUIStyledFormTitle>Login</MUIStyledFormTitle>
@@ -78,10 +71,14 @@ export const LoginPage = () => {
               <Button>Login</Button>
             </MUIStyledSignInForm>
           </MUIStyledFormSignIn>
-          <MUIStyledFormSignUp className="form signupForm">
+          <MUIStyledFormSignUp className={activeForm ? 'active' : ''}>
             <MUIStyledSignUpForm>
               <MUIStyledFormTitle>Cadastro</MUIStyledFormTitle>
-              <RadioGroup aria-label="gender" name="gender1">
+              <RadioGroup
+                aria-label="gender"
+                name="gender1"
+                sx={{ flexDirection: 'row' }}
+              >
                 <FormControlLabel
                   value="cliente"
                   control={<Radio />}
@@ -95,7 +92,7 @@ export const LoginPage = () => {
               </RadioGroup>
               <TextField label="Nome Completo / Razão Social" />
               <TextField label="Email" />
-              <div className="inline-input">
+              <MUIStyledInlineInput className="inline-input">
                 <TextField label="Telefone" />
                 <FormControl>
                   <InputLabel htmlFor="age-native-simple">Segmento</InputLabel>
@@ -106,8 +103,8 @@ export const LoginPage = () => {
                     <option value={30}>Thirty</option>
                   </Select>
                 </FormControl>
-              </div>
-              <div className="inline-input">
+              </MUIStyledInlineInput>
+              <MUIStyledInlineInput className="inline-input">
                 <TextField
                   label="Senha"
                   type="password"
@@ -118,12 +115,12 @@ export const LoginPage = () => {
                   type="password"
                   autoComplete="current-password"
                 />
-              </div>
+              </MUIStyledInlineInput>
               <Button color="secondary">Criar Conta</Button>
             </MUIStyledSignUpForm>
           </MUIStyledFormSignUp>
         </MUIStyledFormBox>
       </MUIStyledLoginBlock>
-    </MUIStyledLoginSeciton>
+    </MUIStyledLoginSection>
   )
 }
