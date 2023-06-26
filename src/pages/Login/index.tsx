@@ -38,26 +38,22 @@ export const LoginPage = () => {
     <MUIStyledLoginSection className={activeForm ? 'active' : ''}>
       <MUIStyledLoginBlock>
         <MUIStyledInfoBoxBg className={activeForm ? 'active' : ''}>
-          <MUIStyledSignInBox className={activeForm ? '' : 'active'}>
+          <MUIStyledSignInBox className={activeForm ? 'active' : ''}>
             <MUIStyledHaveAccountTitle>
               Já possui conta?
             </MUIStyledHaveAccountTitle>
-            <Button className="signinBtn" onClick={changeLogin}>
-              Entrar
-            </Button>
+            <Button onClick={changeLogin}>Entrar</Button>
           </MUIStyledSignInBox>
           <MUIStyledSignUpBox className={activeForm ? 'active' : ''}>
             <MUIStyledHaveAccountTitle>
               Não possui conta?
             </MUIStyledHaveAccountTitle>
-            <Button className="signupBtn" onClick={changeLogin}>
-              Cadastrar
-            </Button>
+            <Button onClick={changeLogin}>Cadastrar</Button>
           </MUIStyledSignUpBox>
         </MUIStyledInfoBoxBg>
         <MUIStyledFormBox className={activeForm ? 'active' : ''}>
           <MUIStyledFormSignIn className={activeForm ? 'active' : ''}>
-            <MUIStyledLogoBox className="logo">
+            <MUIStyledLogoBox>
               {/* <MUIStyledlogo src={logo} fill alt="logo" /> */}
             </MUIStyledLogoBox>
             <MUIStyledSignInForm>
@@ -93,7 +89,7 @@ export const LoginPage = () => {
               </RadioGroup>
               <TextField label="Nome Completo / Razão Social" fullWidth />
               <TextField label="Email" fullWidth />
-              <MUIStyledInlineInput className="inline-input">
+              <MUIStyledInlineInput>
                 <TextField label="Telefone" />
                 <FormControl>
                   <InputLabel htmlFor="age-native-simple">Segmento</InputLabel>
@@ -105,7 +101,7 @@ export const LoginPage = () => {
                   </Select>
                 </FormControl>
               </MUIStyledInlineInput>
-              <MUIStyledInlineInput className="inline-input">
+              <MUIStyledInlineInput>
                 <TextField
                   label="Senha"
                   type="password"
