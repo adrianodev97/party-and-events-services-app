@@ -161,12 +161,10 @@ export const MUIStyledFormBox = styled('div')(({ theme }) => ({
 }))
 
 export const MUIStyledFormSignIn = styled('div')(({ theme }) => ({
-  display: 'flex',
-  flexDirection: 'column',
   position: 'absolute',
   left: '0',
   width: '100%',
-  padding: '0 50px 50px',
+  padding: '1rem 2.5rem',
   transition: '0.5s',
   button: {
     background: '#586da7',
@@ -195,7 +193,7 @@ export const MUIStyledFormSignUp = styled('div')(({ theme }) => ({
   flexDirection: 'column',
   position: 'absolute',
   width: '100%',
-  padding: '0 50px 50px',
+  padding: '1rem 2.5rem',
   transition: '0.5s',
   left: '100%',
   transitionDelay: '0s',
@@ -216,16 +214,21 @@ export const MUIStyledFormSignUp = styled('div')(({ theme }) => ({
 export const MUIStyledSignUpForm = styled('div')(({ theme }) => ({
   left: '100%',
   transitionDelay: '0s',
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '1rem',
 }))
 
 export const MUIStyledFormTitle = styled('h3')(({ theme }) => ({
   fontSize: '1.5em',
   color: '$primary',
-  marginBottom: '20px',
   fontWeight: '600',
 }))
 
 export const MUIStyledSignInForm = styled('div')(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '1rem',
   transitionDelay: '0.25s',
 }))
 
