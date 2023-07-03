@@ -29,12 +29,44 @@ import {
   // MUIStyledlogo,
 } from './styles'
 
+import { useFormik } from 'formik'
+import * as yup from 'yup'
+
 export const LoginPage = () => {
   const [activeForm, setActiveForm] = useState<boolean>(true)
 
   const changeLogin = () => {
     activeForm ? setActiveForm(false) : setActiveForm(true)
   }
+
+  const validationSchema: yup.ObjectSchema<any> = yup.object({
+    email: yup
+      .string()
+      .trim()
+      .email('Please enter a valid email address')
+      .required('Email is required.'),
+    password: yup
+      .string()
+      .trim()
+      .min(6, 'Please enter a valid password')
+      .required('Please enter your password'),
+  })
+
+  const initialValues = {
+    email: '',
+    password: '',
+  }
+
+  const onSubmit: any = (values: any) => {
+    alert(`${values.email} ${values.password}`)
+    formik.resetForm()
+  }
+
+  const formik = useFormik({
+    initialValues,
+    validationSchema,
+    onSubmit,
+  })
 
   return (
     <MUIStyledLoginSection className={activeForm ? 'active' : ''}>
@@ -58,20 +90,36 @@ export const LoginPage = () => {
             <MUIStyledLogoBox>
               {/* <MUIStyledlogo src={logo} fill alt="logo" /> */}
             </MUIStyledLogoBox>
-            <MUIStyledSignInForm>
+            <MUIStyledSignInForm onSubmit={formik.handleSubmit}>
               <MUIStyledFormTitle>Login</MUIStyledFormTitle>
-              <TextField label="Email" fullWidth />
+              <TextField
+                label="Email"
+                type="email"
+                name="email"
+                fullWidth
+                value={formik.values.email}
+                onChange={formik.handleChange}
+                error={formik.touched.email && Boolean(formik.errors.email)}
+                helperText={formik.touched.email && formik.errors.email}
+              />
               <TextField
                 label="Senha"
                 type="password"
+                name="password"
                 autoComplete="current-password"
                 fullWidth
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                error={
+                  formik.touched.password && Boolean(formik.errors.password)
+                }
+                helperText={formik.touched.password && formik.errors.password}
               />
-              <Button>Login</Button>
+              <Button type="submit">Login</Button>
             </MUIStyledSignInForm>
           </MUIStyledFormSignIn>
           <MUIStyledFormSignUp className={activeForm ? 'active' : ''}>
-            <MUIStyledSignUpForm>
+            <MUIStyledSignUpForm onSubmit={formik.handleSubmit}>
               <MUIStyledFormTitle>Cadastro</MUIStyledFormTitle>
               <RadioGroup
                 aria-label="gender"
