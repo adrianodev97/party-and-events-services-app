@@ -32,6 +32,8 @@ import {
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 
+import { fb } from '../../services/hooks'
+
 export const LoginPage = () => {
   const [activeForm, setActiveForm] = useState<boolean>(true)
 
@@ -58,8 +60,15 @@ export const LoginPage = () => {
   }
 
   const onSubmit: any = (values: any) => {
-    alert(`${values.email} ${values.password}`)
-    formik.resetForm()
+    fb.authentication
+      .in(values.email, values.password)
+      .then((response) => {
+        console.log(response)
+        formik.resetForm()
+      })
+      .catch((error) => {
+        console.log(error)
+      }) // tratar com formik
   }
 
   const formik = useFormik({
