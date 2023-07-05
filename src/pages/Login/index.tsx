@@ -41,7 +41,7 @@ export const LoginPage = () => {
     activeForm ? setActiveForm(false) : setActiveForm(true)
   }
 
-  // Sign In Formki Validation
+  // Sign In Formik Validation
 
   const initialValues = {
     email: '',
@@ -79,7 +79,7 @@ export const LoginPage = () => {
     onSubmit,
   })
 
-  // Sign Un Formki Validation
+  // Sign Up Formik Validation
 
   const signUpInitialValues = {
     email: '',
