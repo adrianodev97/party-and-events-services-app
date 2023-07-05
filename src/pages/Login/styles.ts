@@ -211,7 +211,7 @@ export const MUIStyledFormSignUp = styled('div')(({ theme }) => ({
   },
 }))
 
-export const MUIStyledSignUpForm = styled('div')(({ theme }) => ({
+export const MUIStyledSignUpForm = styled('form')(({ theme }) => ({
   left: '100%',
   transitionDelay: '0s',
   display: 'flex',
@@ -225,7 +225,7 @@ export const MUIStyledFormTitle = styled('h3')(({ theme }) => ({
   fontWeight: '600',
 }))
 
-export const MUIStyledSignInForm = styled('div')(({ theme }) => ({
+export const MUIStyledSignInForm = styled('form')(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   gap: '1rem',

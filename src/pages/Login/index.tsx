@@ -1,3 +1,5 @@
+'use client'
+
 import {
   TextField,
   Button,
@@ -27,12 +29,100 @@ import {
   // MUIStyledlogo,
 } from './styles'
 
+import { useFormik } from 'formik'
+import * as yup from 'yup'
+
+import { fb } from '../../services/hooks'
+
 export const LoginPage = () => {
   const [activeForm, setActiveForm] = useState<boolean>(true)
 
   const changeLogin = () => {
     activeForm ? setActiveForm(false) : setActiveForm(true)
   }
+
+  // Sign In Formik Validation
+
+  const initialValues = {
+    email: '',
+    password: '',
+  }
+
+  const validationSchema: yup.ObjectSchema<any> = yup.object({
+    email: yup
+      .string()
+      .trim()
+      .email('Please enter a valid email address')
+      .required('Email is required.'),
+    password: yup
+      .string()
+      .trim()
+      .min(6, 'Please enter a valid password')
+      .required('Please enter your password'),
+  })
+
+  const onSubmit: any = (values: any) => {
+    fb.authentication
+      .in(values.email, values.password)
+      .then((response) => {
+        console.log(response)
+        formik.resetForm()
+      })
+      .catch((error) => {
+        console.log(error)
+      }) // tratar com formik
+  }
+
+  const formik = useFormik({
+    initialValues,
+    validationSchema,
+    onSubmit,
+  })
+
+  // Sign Up Formik Validation
+
+  const signUpInitialValues = {
+    email: '',
+    password: '',
+    checkPassword: '',
+  }
+
+  const signUpValidationSchema: yup.ObjectSchema<any> = yup.object({
+    email: yup
+      .string()
+      .trim()
+      .email('Please enter a valid email address')
+      .required('Email is required.'),
+    password: yup
+      .string()
+      .trim()
+      .min(6, 'Please enter a valid password')
+      .required('Please enter your password'),
+    checkPassword: yup
+      .string()
+      .trim()
+      .min(6, 'Please enter a valid password')
+      .oneOf([yup.ref('password')], 'Passwords must match')
+      .required('Please enter your password'),
+  })
+
+  const signUpOnSubmit: any = (values: any) => {
+    fb.authentication
+      .new(values.email, values.password)
+      .then((response) => {
+        console.log(response)
+        signUpFormik.resetForm()
+      })
+      .catch((error) => {
+        console.log(error)
+      }) // tratar com formik
+  }
+
+  const signUpFormik = useFormik({
+    initialValues: signUpInitialValues,
+    validationSchema: signUpValidationSchema,
+    onSubmit: signUpOnSubmit,
+  })
 
   return (
     <MUIStyledLoginSection className={activeForm ? 'active' : ''}>
@@ -56,20 +146,36 @@ export const LoginPage = () => {
             <MUIStyledLogoBox>
               {/* <MUIStyledlogo src={logo} fill alt="logo" /> */}
             </MUIStyledLogoBox>
-            <MUIStyledSignInForm>
+            <MUIStyledSignInForm onSubmit={formik.handleSubmit}>
               <MUIStyledFormTitle>Login</MUIStyledFormTitle>
-              <TextField label="Email" fullWidth />
+              <TextField
+                label="Email"
+                type="email"
+                name="email"
+                fullWidth
+                value={formik.values.email}
+                onChange={formik.handleChange}
+                error={formik.touched.email && Boolean(formik.errors.email)}
+                helperText={formik.touched.email && formik.errors.email}
+              />
               <TextField
                 label="Senha"
                 type="password"
+                name="password"
                 autoComplete="current-password"
                 fullWidth
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                error={
+                  formik.touched.password && Boolean(formik.errors.password)
+                }
+                helperText={formik.touched.password && formik.errors.password}
               />
-              <Button>Login</Button>
+              <Button type="submit">Login</Button>
             </MUIStyledSignInForm>
           </MUIStyledFormSignIn>
           <MUIStyledFormSignUp className={activeForm ? 'active' : ''}>
-            <MUIStyledSignUpForm>
+            <MUIStyledSignUpForm onSubmit={signUpFormik.handleSubmit}>
               <MUIStyledFormTitle>Cadastro</MUIStyledFormTitle>
               <RadioGroup
                 aria-label="gender"
@@ -88,7 +194,21 @@ export const LoginPage = () => {
                 />
               </RadioGroup>
               <TextField label="Nome Completo / Razão Social" fullWidth />
-              <TextField label="Email" fullWidth />
+              <TextField
+                label="Email"
+                type="email"
+                name="email"
+                fullWidth
+                value={signUpFormik.values.email}
+                onChange={signUpFormik.handleChange}
+                error={
+                  signUpFormik.touched.email &&
+                  Boolean(signUpFormik.errors.email)
+                }
+                helperText={
+                  signUpFormik.touched.email && signUpFormik.errors.email
+                }
+              />
               <MUIStyledInlineInput>
                 <TextField label="Telefone" />
                 <FormControl>
@@ -106,14 +226,38 @@ export const LoginPage = () => {
                   label="Senha"
                   type="password"
                   autoComplete="current-password"
+                  name="password"
+                  value={signUpFormik.values.password}
+                  onChange={signUpFormik.handleChange}
+                  error={
+                    signUpFormik.touched.password &&
+                    Boolean(signUpFormik.errors.password)
+                  }
+                  helperText={
+                    signUpFormik.touched.password &&
+                    signUpFormik.errors.password
+                  }
                 />
                 <TextField
                   label="Senha"
                   type="password"
+                  name="checkPassword"
                   autoComplete="current-password"
+                  value={signUpFormik.values.checkPassword}
+                  onChange={signUpFormik.handleChange}
+                  error={
+                    signUpFormik.touched.checkPassword &&
+                    Boolean(signUpFormik.errors.checkPassword)
+                  }
+                  helperText={
+                    signUpFormik.touched.checkPassword &&
+                    signUpFormik.errors.checkPassword
+                  }
                 />
               </MUIStyledInlineInput>
-              <Button color="secondary">Criar Conta</Button>
+              <Button type="submit" color="secondary">
+                Criar Conta
+              </Button>
             </MUIStyledSignUpForm>
           </MUIStyledFormSignUp>
         </MUIStyledFormBox>
