@@ -1,3 +1,6 @@
+import { MUIHeroSection } from './components/MUIHeroSection'
+import { heroSectionPropsMock } from './components/MUIHeroSection/mocks'
+
 export const HomePage = () => {
-  return <h1>Home</h1>
+  return <MUIHeroSection {...heroSectionPropsMock} />
 }
