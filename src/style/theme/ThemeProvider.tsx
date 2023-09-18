@@ -1,5 +1,5 @@
 import { ThemeProvider as MUIThemeProvider } from '@mui/material'
-import { theme } from '.'
+import { theme } from './theme'
 import { ReactNode } from 'react'
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
