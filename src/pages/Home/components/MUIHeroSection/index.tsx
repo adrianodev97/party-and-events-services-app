@@ -1,11 +1,13 @@
 import { MUIGlobalContainer } from '@/style/global'
-import { Button, Grid } from '@mui/material'
+import { Button } from '@mui/material'
 import Image from 'next/image'
 import Link from 'next/link'
 import {
+  MUIStyledHeroContent,
   MUIStyledHeroDescription,
   MUIStyledHeroFlag,
   MUIStyledHeroImageBlock,
+  MUIStyledHeroInfo,
   MUIStyledHeroSection,
   MUIStyledHeroTitle,
 } from './styles'
@@ -21,21 +23,19 @@ export const MUIHeroSection = ({
   return (
     <MUIStyledHeroSection>
       <MUIGlobalContainer>
-        <Grid container justifyContent={'space-between'} alignItems={'center'}>
-          <Grid item md={5} xs={12}>
-            <MUIStyledHeroImageBlock>
-              <Image src={imageUrl} fill alt="Hero Image" />
-            </MUIStyledHeroImageBlock>
-          </Grid>
-          <Grid item md={6.5} xs={12} display={'flex'} flexDirection={'column'}>
+        <MUIStyledHeroContent>
+          <MUIStyledHeroImageBlock>
+            <Image src={imageUrl} fill alt="Hero Image" />
+          </MUIStyledHeroImageBlock>
+          <MUIStyledHeroInfo>
             <MUIStyledHeroFlag>{flag}</MUIStyledHeroFlag>
             <MUIStyledHeroTitle>{title}</MUIStyledHeroTitle>
             <MUIStyledHeroDescription>{description}</MUIStyledHeroDescription>
             <Link href={button.href}>
               <Button variant="contained">{button.label}</Button>
             </Link>
-          </Grid>
-        </Grid>
+          </MUIStyledHeroInfo>
+        </MUIStyledHeroContent>
       </MUIGlobalContainer>
     </MUIStyledHeroSection>
   )
