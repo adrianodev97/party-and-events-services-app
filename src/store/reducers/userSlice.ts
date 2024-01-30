@@ -12,7 +12,6 @@ const userAuthSlice = createSlice({
   initialState,
   reducers: {
     getUserAuthentication(state, action: PayloadAction<IUserAuthState>) {
-      console.log(state.email)
       state.id = action.payload.id
       state.email = action.payload.email
       state.isLogged = action.payload.isLogged
